@@ -1,4 +1,4 @@
-import '../userPreferences/current_user.dart';
+import '../userPreferences/auth_repository.dart';
 
 class UserModel{
   String user_id;

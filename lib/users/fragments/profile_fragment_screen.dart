@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/users/model/user.dart';
-import 'package:shop/users/userPreferences/current_user.dart';
+import 'package:shop/users/userPreferences/auth_repository.dart';
 
 class ProfileFragmentScreen extends StatelessWidget {
 
@@ -43,24 +43,24 @@ class ProfileFragmentScreen extends StatelessWidget {
       future: repositoryImpl.profile(),
       builder: (context, snapshot) {
         return ListView(
-          padding: EdgeInsets.all(32),
+          padding: const EdgeInsets.all(32),
           children: [
-            Center(
+            const Center(
               child: Icon(
                 Icons.person_pin,
                 size: 240,
                 color: Colors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             userInfoItemProfile(Icons.person, snapshot.data?.user_name ?? ''),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             userInfoItemProfile(Icons.email, snapshot.data?.user_email ?? ''),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Center(

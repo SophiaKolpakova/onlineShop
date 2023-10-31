@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:shop/users/authentication/singup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:shop/users/fragments/dashboard_of_fragments.dart';
@@ -215,7 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           //don't have account

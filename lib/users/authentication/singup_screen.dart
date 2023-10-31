@@ -1,17 +1,15 @@
-import 'dart:convert';
-import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shop/users/userPreferences/current_user.dart';
+import 'package:shop/users/userPreferences/auth_repository.dart';
 import 'package:shop/users/authentication/login_screen.dart';
 
-import '../model/user.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
