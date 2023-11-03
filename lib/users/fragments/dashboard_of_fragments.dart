@@ -8,18 +8,20 @@ import 'favorites_fragment_screen.dart';
 import 'home_fragment_screen.dart';
 
 class DashboardOfFragments extends StatelessWidget {
+  const DashboardOfFragments({super.key});
+
 
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> fragmentScreen = [
-      HomeFragmentScreen(),
+      const HomeFragmentScreen(),
       FavoritesFragmentScreen(),
       OrderFragmentScreen(),
       ProfileFragmentScreen(),
     ];
 
-    List _navigationButtonsProperties = [
+    List navigationButtonsProperties = [
       {
         "active_icon": Icons.home,
         "non_active_icon": Icons.home_outlined,
@@ -42,27 +44,27 @@ class DashboardOfFragments extends StatelessWidget {
       },
     ];
 
-    RxInt _indexNumber = 0.obs;
+    RxInt indexNumber = 0.obs;
 
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Obx(
-              () => fragmentScreen[_indexNumber.value],
+              () => fragmentScreen[indexNumber.value],
         ),
       ),
       bottomNavigationBar: Obx(
             () => BottomNavigationBar(
-          currentIndex: _indexNumber.value,
+          currentIndex: indexNumber.value,
           onTap: (value) {
-            _indexNumber.value = value;
+            indexNumber.value = value;
           },
           showSelectedLabels: true,
           showUnselectedLabels: true,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white24,
           items: List.generate(4, (index) {
-            var navBtnProperties = _navigationButtonsProperties[index];
+            var navBtnProperties = navigationButtonsProperties[index];
             return BottomNavigationBarItem(
               backgroundColor: Colors.black,
               icon: Icon(navBtnProperties["non_active_icon"]),

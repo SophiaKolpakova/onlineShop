@@ -7,7 +7,7 @@ import '../model/products.dart';
 import 'package:shop/users/userPreferences/priduct_repository.dart';
 
 class HomeFragmentScreen extends StatefulWidget {
-  HomeFragmentScreen();
+  const HomeFragmentScreen({super.key});
 
   @override
   HomeFragmentScreenState createState() => HomeFragmentScreenState();
@@ -47,13 +47,13 @@ class HomeFragmentScreenState extends State<HomeFragmentScreen> {
                   leading: Image.network(products[index].imagePath),
                   title: Text(
                     products[index].name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   subtitle: Text('Price: \$${products[index].price}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w300,
                       )),

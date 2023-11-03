@@ -57,7 +57,7 @@ class MyAppState extends State<MyApp> {
       ),
       home: FutureBuilder(
         builder: (context, dataSnapShot) {
-          return isLogin ? DashboardOfFragments() : LoginScreen();
+          return isLogin ? const DashboardOfFragments() : const LoginScreen();
         },
       ),
     );

@@ -7,6 +7,8 @@ import 'package:shop/users/fragments/dashboard_of_fragments.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -232,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Get.to(SignUpScreen());
+                                  Get.to(const SignUpScreen());
                                 },
                                 child: const Text('Sign up',
                                     style: TextStyle(fontSize: 16)),
