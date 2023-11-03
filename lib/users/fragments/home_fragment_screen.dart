@@ -1,20 +1,38 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shop/users/userPreferences/auth_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../model/products.dart';
+import 'package:shop/users/userPreferences/priduct_repository.dart';
 
 class HomeFragmentScreen extends StatefulWidget {
-  const HomeFragmentScreen({super.key});
+  HomeFragmentScreen();
 
   @override
   HomeFragmentScreenState createState() => HomeFragmentScreenState();
 }
 
 class HomeFragmentScreenState extends State<HomeFragmentScreen> {
-  List<Product> products = [
-    Product("Oversize black shirt", "images/num1.jpg", "47 €"),
-    Product("Black suit fabric vest", "images/num22.jpg", "29 €"),
-    Product("Beige anorak jacket ", "images/num33.jpg", "39 €"),
-  ];
-  List<Product> favorites = [];
-  List<Product> cart = [];
+  ProductRepositoryImpl productRepository =
+      ProductRepositoryImpl(FirebaseFirestore.instance);
+
+  List<ProductModel> products = [];
+
+  HomeFragmentScreenState();
+
+  @override
+  void initState() {
+    super.initState();
+    loadProducts();
+  }
+
+  void loadProducts() async {
+    List<ProductModel> fetchedProducts = await productRepository.getProducts();
+    setState(() {
+      products = fetchedProducts;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +44,29 @@ class HomeFragmentScreenState extends State<HomeFragmentScreen> {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Image.asset(products[index].imagePath),
-                  title: Text(products[index].name),
-                  subtitle: Text('Price: \$${products[index].price}'),
+                  leading: Image.network(products[index].imagePath),
+                  title: Text(
+                    products[index].name,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  subtitle: Text('Price: \$${products[index].price}',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                      )),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.favorite, color: favorites.contains(products[index]) ? Colors.black : null),
+                        icon: Icon(Icons.favorite,
+                            color: products[index].favProduct
+                                ? Colors.black
+                                : Colors.grey),
                         onPressed: () {
                           toggleFavorite(products[index]);
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.shopping_cart),
-                        onPressed: () {
-                          addToCart(products[index]);
                         },
                       ),
                     ],
@@ -50,38 +75,15 @@ class HomeFragmentScreenState extends State<HomeFragmentScreen> {
               },
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-            },
-            child: const Text('Place an order'),
-          ),
-          const SizedBox(height: 24),
         ],
       ),
     );
   }
 
-  void toggleFavorite(Product product) {
-    setState(() {
-      if (favorites.contains(product)) {
-        favorites.remove(product);
-      } else {
-        favorites.add(product);
-      }
-    });
+  void toggleFavorite(ProductModel product) async {
+    product.favProduct = !product.favProduct;
+    setState(() {});
+
+    await productRepository.updateProduct(product);
   }
-
-  void addToCart(Product product) {
-    setState(() {
-      cart.add(product);
-    });
-  }
-}
-
-class Product {
-  final String name;
-  final String imagePath;
-  final String price;
-
-  Product(this.name, this.imagePath, this.price);
 }

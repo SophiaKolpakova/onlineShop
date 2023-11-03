@@ -10,47 +10,49 @@ import 'home_fragment_screen.dart';
 class DashboardOfFragments extends StatelessWidget {
 
 
-  final List<Widget> _fragmentScreen = [
-    HomeFragmentScreen(),
-    FavoritesFragmentScreen(),
-    OrderFragmentScreen(),
-    ProfileFragmentScreen()
-  ];
-
-  List _navigationButtonsProperties = [
-    {
-      "active_icon": Icons.home,
-      "non_active_icon": Icons.home_outlined,
-      "label": "Home"
-    },
-    {
-      "active_icon": Icons.favorite,
-      "non_active_icon": Icons.favorite_border,
-      "label": "Favorites"
-    },
-    {
-      "active_icon": FontAwesomeIcons.boxOpen,
-      "non_active_icon": FontAwesomeIcons.box,
-      "label": "Order"
-    },
-    {
-      "active_icon": Icons.person,
-      "non_active_icon": Icons.person_outline,
-      "label": "Profile"
-    },
-  ];
-
-  RxInt _indexNumber = 0.obs;
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> fragmentScreen = [
+      HomeFragmentScreen(),
+      FavoritesFragmentScreen(),
+      OrderFragmentScreen(),
+      ProfileFragmentScreen(),
+    ];
+
+    List _navigationButtonsProperties = [
+      {
+        "active_icon": Icons.home,
+        "non_active_icon": Icons.home_outlined,
+        "label": "Home"
+      },
+      {
+        "active_icon": Icons.favorite,
+        "non_active_icon": Icons.favorite_border,
+        "label": "Favorites"
+      },
+      {
+        "active_icon": FontAwesomeIcons.boxOpen,
+        "non_active_icon": FontAwesomeIcons.box,
+        "label": "Order"
+      },
+      {
+        "active_icon": Icons.person,
+        "non_active_icon": Icons.person_outline,
+        "label": "Profile"
+      },
+    ];
+
+    RxInt _indexNumber = 0.obs;
+
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(child: Obx(
-          ()=> _fragmentScreen[_indexNumber.value],
-      ),),
+      body: SafeArea(
+        child: Obx(
+              () => fragmentScreen[_indexNumber.value],
+        ),
+      ),
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
+            () => BottomNavigationBar(
           currentIndex: _indexNumber.value,
           onTap: (value) {
             _indexNumber.value = value;

@@ -4,12 +4,15 @@ import 'package:shop/users/authentication/singup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:shop/users/fragments/dashboard_of_fragments.dart';
 
+
+
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();

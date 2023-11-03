@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/users/fragments/dashboard_of_fragments.dart';
 
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -25,6 +26,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
+
   var isLogin = false;
   var auth = FirebaseAuth.instance;
 
@@ -46,6 +48,7 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Clothes App',
