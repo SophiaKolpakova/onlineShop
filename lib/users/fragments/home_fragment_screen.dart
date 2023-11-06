@@ -1,8 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shop/users/userPreferences/auth_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../model/products.dart';
 import 'package:shop/users/userPreferences/priduct_repository.dart';
 
@@ -69,6 +69,15 @@ class HomeFragmentScreenState extends State<HomeFragmentScreen> {
                           toggleFavorite(products[index]);
                         },
                       ),
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.basketShopping,
+                            color: products[index].ordProducts
+                                ? Colors.black
+                                : Colors.grey),
+                        onPressed: () {
+                          toggleOrder(products[index]);
+                        },
+                      ),
                     ],
                   ),
                 );
@@ -82,6 +91,13 @@ class HomeFragmentScreenState extends State<HomeFragmentScreen> {
 
   void toggleFavorite(ProductModel product) async {
     product.favProduct = !product.favProduct;
+    setState(() {});
+
+    await productRepository.updateProduct(product);
+  }
+
+  void toggleOrder(ProductModel product) async {
+    product.ordProducts = !product.ordProducts;
     setState(() {});
 
     await productRepository.updateProduct(product);

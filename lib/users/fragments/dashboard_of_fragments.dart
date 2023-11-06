@@ -10,8 +10,6 @@ import 'home_fragment_screen.dart';
 class DashboardOfFragments extends StatelessWidget {
   const DashboardOfFragments({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
     final List<Widget> fragmentScreen = [
@@ -50,11 +48,11 @@ class DashboardOfFragments extends StatelessWidget {
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Obx(
-              () => fragmentScreen[indexNumber.value],
+          () => fragmentScreen[indexNumber.value],
         ),
       ),
       bottomNavigationBar: Obx(
-            () => BottomNavigationBar(
+        () => BottomNavigationBar(
           currentIndex: indexNumber.value,
           onTap: (value) {
             indexNumber.value = value;

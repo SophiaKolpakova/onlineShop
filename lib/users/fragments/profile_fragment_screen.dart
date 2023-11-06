@@ -4,9 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/users/model/user.dart';
 import 'package:shop/users/userPreferences/auth_repository.dart';
 
-class ProfileFragmentScreen extends StatelessWidget {
+import '../authentication/login_screen.dart';
 
-  AuthRepositoryImpl repositoryImpl = AuthRepositoryImpl(FirebaseAuth.instance, FirebaseFirestore.instance);
+class ProfileFragmentScreen extends StatelessWidget {
+  AuthRepositoryImpl repositoryImpl =
+      AuthRepositoryImpl(FirebaseAuth.instance, FirebaseFirestore.instance);
 
   Widget userInfoItemProfile(IconData iconData, String userData) {
     return Container(
@@ -39,7 +41,8 @@ class ProfileFragmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: FutureBuilder<UserModel>(
+    return Scaffold(
+        body: FutureBuilder<UserModel>(
       future: repositoryImpl.profile(),
       builder: (context, snapshot) {
         return ListView(
@@ -70,8 +73,7 @@ class ProfileFragmentScreen extends StatelessWidget {
                 child: InkWell(
                   onTap: () {},
                   borderRadius: BorderRadius.circular(32),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                  child: TextButton(
                     child: Text(
                       "Sign Out",
                       style: TextStyle(
@@ -79,6 +81,12 @@ class ProfileFragmentScreen extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.w400),
                     ),
+                    onPressed: () async {
+                      await repositoryImpl.logOut();
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ));
+                    },
                   ),
                 ),
               ),

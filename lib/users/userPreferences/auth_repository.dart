@@ -23,7 +23,7 @@ import '../model/user.dart';
 
 
   Future<bool> logOut() async {
-    final userCredential = await _firebaseAuth.signOut();
+    await _firebaseAuth.signOut();
     return true;
   }
 
