@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           ? "Please write your password"
                                           : null,
                                       decoration: InputDecoration(
-                                        prefixIcon: const Icon(
+                                        prefixIcon: const Icon( 
                                           Icons.vpn_key_sharp,
                                           color: Colors.black,
                                         ),

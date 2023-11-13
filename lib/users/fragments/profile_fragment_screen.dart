@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/users/model/user.dart';
 import 'package:shop/users/userPreferences/auth_repository.dart';
-
 import '../authentication/login_screen.dart';
 
 class ProfileFragmentScreen extends StatelessWidget {
@@ -74,7 +73,7 @@ class ProfileFragmentScreen extends StatelessWidget {
                   onTap: () {},
                   borderRadius: BorderRadius.circular(32),
                   child: TextButton(
-                    child: Text(
+                    child: const Text(
                       "Sign Out",
                       style: TextStyle(
                           color: Colors.white,

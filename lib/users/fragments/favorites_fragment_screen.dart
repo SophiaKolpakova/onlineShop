@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shop/users/fragments/product_card.dart';
+import 'package:shop/users/fragments/product_details_screen.dart';
 import '../model/products.dart';
 import '../userPreferences/priduct_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -37,29 +38,46 @@ class _FavoritesFragmentScreenState extends State<FavoritesFragmentScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Favorites', style: TextStyle(color: Colors.white)),
+        title: const Text('Favorites', style: TextStyle(color: Colors.white)),
       ),
-      body: ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-              leading: Image.network(products[index].imagePath),
-              title: Text(products[index].name),
-              subtitle: Text('Price: \$${products[index].price}'),
-              trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-                IconButton(
-                  icon: Icon(FontAwesomeIcons.basketShopping,
-                      color: products[index].ordProducts
-                          ? Colors.black
-                          : Colors.grey),
-                  onPressed: () {
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+              ),
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                return ProductCard(
+                  product: products[index],
+                  onFavoritePressed: () {
+                    toggleFavorite(products[index]);
+                  },
+                  onOrderPressed: () {
                     toggleOrder(products[index]);
                   },
-                ),
-              ]));
-        },
+                  onTap: () {
+                    navigateToProductDetails(products[index]);
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void toggleFavorite(ProductModel product) async {
+    product.favProduct = !product.favProduct;
+    setState(() {});
+
+    await productRepository.updateProduct(product);
   }
 
   void toggleOrder(ProductModel product) async {
@@ -67,5 +85,14 @@ class _FavoritesFragmentScreenState extends State<FavoritesFragmentScreen> {
     setState(() {});
 
     await productRepository.updateProduct(product);
+  }
+
+  void navigateToProductDetails(ProductModel product) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProductDetailsScreen(product: product),
+      ),
+    );
   }
 }
