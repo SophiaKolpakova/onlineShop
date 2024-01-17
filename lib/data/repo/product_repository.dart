@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../model/products.dart';
+import '../model/product_model.dart';
 
 class ProductRepositoryImpl {
   final FirebaseFirestore _firestore;

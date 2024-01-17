@@ -2,8 +2,8 @@ import 'package:flutter/material.dart.';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:shop/users/fragments/order_fragment_screen.dart';
-import 'package:shop/users/fragments/profile_fragment_screen.dart';
+import 'package:shop/presentation/screen/order_fragment_screen.dart';
+import 'package:shop/presentation/screen/profile_fragment_screen.dart';
 import 'favorites_fragment_screen.dart';
 import 'home_fragment_screen.dart';
 

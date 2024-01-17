@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../model/products.dart';
+import '../../data/model/product_model.dart';
 import 'full_screen_Image_list.dart';
 
 class ProductDetailsScreen extends StatelessWidget {

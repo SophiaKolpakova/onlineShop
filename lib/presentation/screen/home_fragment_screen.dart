@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:shop/users/fragments/product_card.dart';
-import '../model/products.dart';
-import '../userPreferences/priduct_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:shop/presentation/screen/product_card.dart';
+import '../../data/model/product_model.dart';
+import '../../data/repo/product_repository.dart';
 import 'product_details_screen.dart';
 
-class OrderFragmentScreen extends StatefulWidget {
-  OrderFragmentScreen();
+class HomeFragmentScreen extends StatefulWidget {
+  const HomeFragmentScreen({Key? key}) : super(key: key);
 
   @override
-  _OrderFragmentScreenState createState() => _OrderFragmentScreenState();
+  HomeFragmentScreenState createState() => HomeFragmentScreenState();
 }
 
-class _OrderFragmentScreenState extends State<OrderFragmentScreen> {
+class HomeFragmentScreenState extends State<HomeFragmentScreen> {
   ProductRepositoryImpl productRepository =
-      ProductRepositoryImpl(FirebaseFirestore.instance);
+  ProductRepositoryImpl(FirebaseFirestore.instance);
 
   List<ProductModel> products = [];
 
@@ -25,8 +25,7 @@ class _OrderFragmentScreenState extends State<OrderFragmentScreen> {
   }
 
   void loadProducts() async {
-    List<ProductModel> fetchedProducts =
-        await productRepository.getOrderProducts();
+    List<ProductModel> fetchedProducts = await productRepository.getProducts();
     setState(() {
       products = fetchedProducts;
     });
@@ -35,10 +34,6 @@ class _OrderFragmentScreenState extends State<OrderFragmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text('Order', style: TextStyle(color: Colors.white)),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

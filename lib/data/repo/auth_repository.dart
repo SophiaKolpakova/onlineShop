@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../model/user.dart';
+import '../model/user_model.dart';
 
  class AuthRepositoryImpl {
   final FirebaseAuth _firebaseAuth;
@@ -15,6 +15,11 @@ import '../model/user.dart';
     return true;
   }
 
+  Future<bool> logIn(String email, String password) async {
+    final userCredential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    return userCredential.user?.uid != null;
+  }
 
   Future<bool> deleteAccount() async {
     final userCredential = await _firebaseAuth.currentUser?.delete();

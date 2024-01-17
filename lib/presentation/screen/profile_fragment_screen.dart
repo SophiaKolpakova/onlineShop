@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shop/users/model/user.dart';
-import 'package:shop/users/userPreferences/auth_repository.dart';
-import '../authentication/login_screen.dart';
+import 'package:shop/data/repo/auth_repository.dart';
+import '../../data/model/user_model.dart';
+import 'login/login_screen.dart';
 
 class ProfileFragmentScreen extends StatelessWidget {
   AuthRepositoryImpl repositoryImpl =

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop/users/fragments/product_card.dart';
-import 'package:shop/users/fragments/product_details_screen.dart';
-import '../model/products.dart';
-import '../userPreferences/priduct_repository.dart';
+import 'package:shop/presentation/screen/product_card.dart';
+import 'package:shop/presentation/screen/product_details_screen.dart';
+import '../../data/model/product_model.dart';
+import '../../data/repo/product_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FavoritesFragmentScreen extends StatefulWidget {
