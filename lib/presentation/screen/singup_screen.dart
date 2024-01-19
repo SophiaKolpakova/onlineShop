@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shop/data/repo/auth_repository.dart';
+import 'package:shop/data/repo/auth/auth_firebase_repository.dart';
 import 'login/login_screen.dart';
 
 
@@ -20,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObscure = true.obs;
-  AuthRepositoryImpl repository = AuthRepositoryImpl( FirebaseAuth.instance, FirebaseFirestore.instance);
+  AuthFirebaseRepositoryImpl repository = AuthFirebaseRepositoryImpl( FirebaseAuth.instance, FirebaseFirestore.instance);
 
 
   registerAndSaveUserRecord() async {

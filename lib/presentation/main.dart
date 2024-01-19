@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/presentation/screen/dashboard_of_fragments.dart';
 import 'package:shop/presentation/screen/login/bloc/login_bloc.dart';
 import 'package:shop/presentation/screen/login/login_screen.dart';
-import '../data/repo/auth_repository.dart';
+import '../data/repo/auth/auth_firebase_repository.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,11 +53,13 @@ class MyAppState extends State<MyApp> {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => LoginBloc(
-                      authRepositoryImpl: AuthRepositoryImpl(
-                    FirebaseAuth.instance,
-                    FirebaseFirestore.instance,
-                  ))),
+            create: (context) => LoginBloc(
+              authRepositoryImpl: AuthFirebaseRepositoryImpl(
+                FirebaseAuth.instance,
+                FirebaseFirestore.instance,
+              ),
+            ),
+          ),
         ],
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
@@ -70,7 +72,8 @@ class MyAppState extends State<MyApp> {
               return isLogin
                   ? const DashboardOfFragments()
                   : const LoginScreen();
-            }, future: null,
+            },
+            future: null,
           ),
         ));
   }

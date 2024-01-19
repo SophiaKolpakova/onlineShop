@@ -7,7 +7,7 @@ import 'dart:async' as _i5;
 
 import 'package:bloc/bloc.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:shop/data/repo/auth_repository.dart' as _i2;
+import 'package:shop/data/repo/auth/auth_firebase_repository.dart' as _i2;
 import 'package:shop/presentation/screen/login/bloc/login_bloc.dart' as _i4;
 import 'package:shop/presentation/screen/login/bloc/login_event.dart' as _i6;
 import 'package:shop/presentation/screen/login/bloc/login_state.dart' as _i3;
@@ -26,7 +26,7 @@ import 'package:shop/presentation/screen/login/bloc/login_state.dart' as _i3;
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeAuthRepositoryImpl_0 extends _i1.SmartFake
-    implements _i2.AuthRepositoryImpl {
+    implements _i2.AuthFirebaseRepositoryImpl {
   _FakeAuthRepositoryImpl_0(
     Object parent,
     Invocation parentInvocation,
@@ -51,7 +51,7 @@ class _FakeLoginState_1 extends _i1.SmartFake implements _i3.LoginState {
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginBloc extends _i1.Mock implements _i4.LoginBloc {
   @override
-  _i2.AuthRepositoryImpl get authRepositoryImpl => (super.noSuchMethod(
+  _i2.AuthFirebaseRepositoryImpl get authRepositoryImpl => (super.noSuchMethod(
         Invocation.getter(#authRepositoryImpl),
         returnValue: _FakeAuthRepositoryImpl_0(
           this,
@@ -61,7 +61,7 @@ class MockLoginBloc extends _i1.Mock implements _i4.LoginBloc {
           this,
           Invocation.getter(#authRepositoryImpl),
         ),
-      ) as _i2.AuthRepositoryImpl);
+      ) as _i2.AuthFirebaseRepositoryImpl);
 
   @override
   _i3.LoginState get state => (super.noSuchMethod(

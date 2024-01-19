@@ -7,7 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:shop/data/model/user_model.dart' as _i2;
-import 'package:shop/data/repo/auth_repository.dart' as _i3;
+import 'package:shop/data/repo/auth/auth_firebase_repository.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -36,7 +36,7 @@ class _FakeUserModel_0 extends _i1.SmartFake implements _i2.UserModel {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRepositoryImpl extends _i1.Mock
-    implements _i3.AuthRepositoryImpl {
+    implements _i3.AuthFirebaseRepositoryImpl {
   @override
   _i4.Future<bool> resetPasswordAndEmail(String? email) => (super.noSuchMethod(
         Invocation.method(

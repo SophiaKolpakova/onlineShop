@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
-import '../../../../data/repo/auth_repository.dart';
+import '../../../../data/repo/auth/auth_firebase_repository.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
-  final AuthRepositoryImpl authRepositoryImpl;
+  final AuthFirebaseRepositoryImpl authRepositoryImpl;
 
   LoginBloc({required this.authRepositoryImpl}) : super(InitialLoginState()) {
     on<LoginEvent>(_loginEventHandler);
