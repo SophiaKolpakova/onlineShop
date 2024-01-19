@@ -7,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop/presentation/screen/dashboard_of_fragments.dart';
 import 'package:shop/presentation/screen/login/bloc/login_bloc.dart';
 import 'package:shop/presentation/screen/login/login_screen.dart';
-
 import '../data/repo/auth_repository.dart';
 
 Future main() async {
@@ -71,7 +70,7 @@ class MyAppState extends State<MyApp> {
               return isLogin
                   ? const DashboardOfFragments()
                   : const LoginScreen();
-            },
+            }, future: null,
           ),
         ));
   }

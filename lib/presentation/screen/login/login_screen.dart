@@ -111,6 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               //email
               TextFormField(
+                key: const Key('email_field'),
                 controller: emailController,
                 validator: (val) =>
                     val == "" ? "Please write your email" : null,
@@ -158,6 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               //password
               Obx(() => TextFormField(
+                    key: const Key('password_field'),
                     controller: passwordController,
                     obscureText: isObscure.value,
                     validator: (val) =>
@@ -222,6 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(30),
                 child: InkWell(
+                  key: const Key('login_btn'),
                   onTap: () async {
                     loginBloc.add(LoginEvent(emailController.text.trim(),
                         passwordController.text.trim()));
