@@ -1,6 +1,11 @@
 # shop
 
 A new Flutter project.
+![Screenshot 2024-01-20 011449](https://github.com/SophiaKolpakova/onlineShop/assets/118456161/b33ec374-8985-4dee-a20b-a438aa2ea3b5)
+
+
+https://github.com/SophiaKolpakova/onlineShop/assets/118456161/17148d69-88e8-4dd8-9653-9c3d00dc1d83
+
 
 ## Getting Started
 
